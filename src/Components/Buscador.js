@@ -76,15 +76,16 @@ export const Buscador = () => {
 
 
             <div className="col-md-6" id="Resultados">
-               Resultado de la búsqueda
+               <h1>Resultado de la búsqueda</h1><br />
+            
 
                {
                     (correspondencia)
                     ?  correspondencia.map( correspondenciaMap =>(
                         
                         
-                        <h5 key={correspondenciaMap.FolioRemitente}>
-                            <Link className="link-primary" to={`/correspondencia/detalleCorrespondencia?folioRemitente=${correspondenciaMap.FolioRemitente}&seleccionar=1`}
+                        <h5 key={correspondenciaMap.FolioRemitente} style={{"textAlign" : "left"}}>
+                            <Link className="link-primary" to={`/CorrespondenciaDetalle?folioRemitente=${correspondenciaMap.FolioRemitente}&seleccionar=1`}
                                 style={{"fontSize": "16px"}}
                                 >
                                 {correspondenciaMap.FolioRemitente}                                
