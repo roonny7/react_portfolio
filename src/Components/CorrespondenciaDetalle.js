@@ -29,6 +29,9 @@ export const CorrespondenciaDetalle = () => {
     
     let [ correspondencia, setCorrespondencia] = useState(estadoInicial);
     let datosCorrespondencia='';    
+    let datosAdjuntos='';
+    let correspondenciaCompleta=[];
+    correspondenciaCompleta[0]={};
 
     useEffect(() => {
         buscarFolioCorrespondencia(folioRemitente)
@@ -38,16 +41,18 @@ export const CorrespondenciaDetalle = () => {
             });        
     }, [folioRemitente])
     
-    datosCorrespondencia=correspondencia.folioCorrespondencia;
+    //datosCorrespondencia=correspondencia.folioCorrespondencia;
     
-    console.log(datosCorrespondencia);
+    datosCorrespondencia = {...correspondencia};
+    //console.log(datosCorrespondencia);
     if (datosCorrespondencia)
-    {   //console.log(correspondencia.folioCorrespondencia);
-        //correspondencia=correspondencia.folioCorrespondencia;
-        
-        
+    {   
+        datosAdjuntos=datosCorrespondencia.archivosAdjuntos;
+        correspondenciaCompleta=datosCorrespondencia.folioCorrespondencia;
 
-
+        (correspondenciaCompleta) 
+        ? correspondencia = {...correspondenciaCompleta[0]}
+        : correspondencia = {};
     }
 
     
@@ -105,7 +110,13 @@ export const CorrespondenciaDetalle = () => {
 
                 
                 <div className="row">
-
+                {
+                (datosAdjuntos)
+                    ? datosAdjuntos.forEach(element => {  
+                           console.log(element);
+                        })
+                    : ''
+                }
                 </div>
                 
 
